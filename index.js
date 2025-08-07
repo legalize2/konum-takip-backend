@@ -23,7 +23,7 @@ app.use(cors({
 app.use(express.json());
 
 const PORT = process.env.PORT || 4000;
-const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:3000';
+const FRONTEND_URL = 'https://konum-takip-paneli.vercel.app'; // Hardcoded temporarily
 const DATA_PATH = path.join(process.cwd(), 'links.json');
 
 // Yardımcı fonksiyonlar
