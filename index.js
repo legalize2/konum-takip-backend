@@ -23,6 +23,7 @@ app.use(cors({
 app.use(express.json());
 
 const PORT = process.env.PORT || 4000;
+const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:3000';
 const DATA_PATH = path.join(process.cwd(), 'links.json');
 
 // Yardımcı fonksiyonlar
@@ -49,7 +50,7 @@ app.post('/api/create-link', (req, res) => {
     lastSeen: null
   };
   writeLinks(links);
-  res.json({ link: `/track/${id}`, id, name: links[id].name });
+  res.json({ link: `${FRONTEND_URL}/track/${id}`, id, name: links[id].name });
 });
 
 // Aktif linkleri listele
