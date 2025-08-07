@@ -50,6 +50,8 @@ app.post('/api/create-link', (req, res) => {
     lastSeen: null
   };
   writeLinks(links);
+  console.log('FRONTEND_URL:', FRONTEND_URL);
+  console.log('Generated link:', `${FRONTEND_URL}/track/${id}`);
   res.json({ link: `${FRONTEND_URL}/track/${id}`, id, name: links[id].name });
 });
 
