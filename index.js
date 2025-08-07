@@ -53,6 +53,17 @@ app.post('/api/create-link', (req, res) => {
   res.json({ link: `${FRONTEND_URL}/track/${id}`, id, name: links[id].name });
 });
 
+// Debug endpoint - environment variables kontrol
+app.get('/api/debug', (req, res) => {
+  res.json({
+    PORT: process.env.PORT,
+    FRONTEND_URL_ENV: process.env.FRONTEND_URL,
+    FRONTEND_URL_USED: FRONTEND_URL,
+    CORS_ORIGIN: process.env.CORS_ORIGIN,
+    ALL_ENV: process.env
+  });
+});
+
 // Aktif linkleri listele
 app.get('/api/links', (req, res) => {
   const links = readLinks();
