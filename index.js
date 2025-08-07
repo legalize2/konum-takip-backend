@@ -69,7 +69,11 @@ app.get('/api/debug', (req, res) => {
 // Aktif linkleri listele
 app.get('/api/links', (req, res) => {
   const links = readLinks();
-  res.json(Object.values(links));
+  const linksWithUrls = Object.values(links).map(link => ({
+    ...link,
+    link: `${FRONTEND_URL}/track/${link.id}`
+  }));
+  res.json(linksWithUrls);
 });
 
 // Belirli bir takip linkinin konum geçmişini getir
